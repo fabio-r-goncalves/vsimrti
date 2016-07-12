@@ -4,7 +4,7 @@ RUN apt-get install -y wget
 RUN apt-get install -y unzip
 RUN mkdir /home/vsimrti
 VOLUME /home/vsimrti
-RUN wget https://www.dcaiti.tu-berlin.de/research/simulation/download/get/vsimrti-$
+RUN wget https://www.dcaiti.tu-berlin.de/research/simulation/download/get/vsimrti-bin-0.16.1.zip
 RUN unzip vsimrti-bin-0.16.1.zip -d /home
 RUN rm vsimrti-bin-0.16.1.zip
 WORKDIR /home/vsimrti
@@ -17,4 +17,5 @@ RUN echo yes | apt-get install -y oracle-java8-installer
 RUN add-apt-repository -y ppa:sumo/stable
 RUN apt-get update
 RUN apt-get install -y --allow-unauthenticated sumo sumo-tools sumo-doc
-ENTRYPOI
+ENTRYPOINT ["top", "-b"]
+CMD ["-c"]
