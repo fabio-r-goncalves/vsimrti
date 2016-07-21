@@ -1,5 +1,6 @@
 FROM ubuntu:latest
 EXPOSE 46587
+EXPOSE 4100
 RUN apt-get update
 RUN apt-get install -y wget
 RUN apt-get install -y unzip
