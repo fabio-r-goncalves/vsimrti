@@ -24,4 +24,6 @@ WORKDIR /home/vsimrti
 VOLUME /home/vsimrti
 ADD ./script.sh /script.sh
 RUN chmod 777 /script.sh
+RUN apt-get update --fix-missing
+RUN apt-get install -y gedit
 ENTRYPOINT ["/bin/bash","/script.sh"]
