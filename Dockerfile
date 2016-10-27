@@ -11,8 +11,8 @@ RUN apt-get install -y lbzip2 patch
 RUN mkdir /home/vsimrti
 RUN chown 1000:1000 -R /home/vsimrti
 RUN wget https://www.dcaiti.tu-berlin.de/research/simulation/download/get/vsimrti-bin-0.16.2.zip
-RUN unzip vsimrti-bin-0.16.1.zip -d /home
-RUN rm vsimrti-bin-0.16.1.zip
+RUN unzip vsimrti-bin-0.16.2.zip -d /home
+RUN rm vsimrti-bin-0.16.2.zip
 RUN apt-get install -y software-properties-common
 RUN apt-add-repository -y ppa:webupd8team/java
 RUN apt-get update
