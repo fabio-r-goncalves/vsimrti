@@ -23,12 +23,13 @@ RUN apt-get install -y --allow-unauthenticated sumo sumo-tools sumo-doc
 RUN apt-get install -y build-essential libsqlite3-dev libcrypto++-dev libboost-all-dev libssl-dev git python-setuptools
 RUN apt-get install -y python-dev python-pygraphviz python-kiwi python-pygoocanvas python-gnome2 python-rsvg ipython
 RUN apt-get install -y git
-RUN mkdir /home/vsimrti-allinone/bin/fed/ns3/ns-ndn
-RUN cd /home/vsimrti-allinone/bin/fed/ns3/ns-ndn && git clone https://github.com/named-data-ndnSIM/ns-3-dev.git ns-3 && git clone https://github.com/named-data-ndnSIM/pybindgen.git pybindgen &&  git clone --recursive https://github.com/named-data-ndnSIM/ndnSIM.git ns-3/src/ndnSIM
+RUN mkdir /home/vsimrti-allinone/vsimrti/bin/fed/ns3/ns-ndn
+RUN cd /home/vsimrti-allinone/vsimrti/bin/fed/ns3/ns-ndn && git clone https://github.com/named-data-ndnSIM/ns-3-dev.git ns-3 && git clone https://github.com/named-data-ndnSIM/pybindgen.git pybindgen &&  git clone --recursive https://github.com/named-data-ndnSIM/ndnSIM.git ns-3/src/ndnSIM
 
 WORKDIR /home/vsimrti
 VOLUME /home/vsimrti
 ADD ./script.sh /script.sh
+ADD ./vsim_patch.sh /home/vsimrti-allinone/vsimrti/bin/fed/ns3/
 RUN chmod 777 /script.sh
 RUN apt-get update --fix-missing
 RUN apt-get install -y gedit
