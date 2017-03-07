@@ -30,6 +30,7 @@ WORKDIR /home/vsimrti
 VOLUME /home/vsimrti
 ADD ./script.sh /script.sh
 ADD ./vsim_patch.sh /home/vsimrti-allinone/vsimrti/bin/fed/ns3/
+ADD ./run.sh /home/vsimrti-allinone/vsimrti/bin/fed/ns3/
 RUN chmod 777 /script.sh
 RUN apt-get update --fix-missing
 RUN apt-get install -y gedit
