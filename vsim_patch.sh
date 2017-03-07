@@ -2,10 +2,10 @@
 
 ns3_version="3.25"
 vsimrti_version="0.16.2"
-ns3_installation_path="/home/vsimrti/bin/fed/ns3"
-ns3_version_affix="ns-ndn"
-ns3_version_affix_unified="ns-ndn"
-ns3_short_affix="ns-3"
+ns3_installation_path="/home/vsimrti-allinone/vsimrti/bin/fed/ns3"
+ns3_version_affix="ns-allinone"
+ns3_version_affix_unified="ns-allinone"
+ns3_short_affix="ns"
 ns3_federate_url="https://www.dcaiti.tu-berlin.de/research/simulation/download/get/ns-3-patch-$vsimrti_version.zip"
 ns3_federate_filename="$(basename "$ns3_federate_url")"
 
