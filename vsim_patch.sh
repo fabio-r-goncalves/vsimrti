@@ -90,5 +90,6 @@ extract_ns3_federate()
 
 
 download_federate
+rm scratch/cflags.py.patch
 extract_ns3_federate "$ns3_federate_filename"
 patch_ns3
