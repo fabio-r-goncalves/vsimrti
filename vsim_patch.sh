@@ -89,7 +89,11 @@ extract_ns3_federate()
 }
 
 
+echo "Downloading patch"
 download_federate
-rm patch/ns-VERSION_patches/cflags.py.patch
+echo "extracting patch"
 extract_ns3_federate "$ns3_federate_filename"
+echo "patching ns3"
 patch_ns3
+echo "exit with success"
+exit 0;
