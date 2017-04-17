@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ns3_version="3.25"
-vsimrti_version="0.16.2"
+vsimrti_version="17.0"
 ns3_installation_path="/home/vsimrti-allinone/vsimrti/bin/fed/ns3"
 ns3_version_affix="ns-allinone"
 ns3_version_affix_unified="ns-allinone"
