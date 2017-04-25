@@ -8,13 +8,6 @@ RUN apt-get update
 RUN echo yes | apt-get install -y oracle-java8-set-default
 RUN apt-get install -y wget tar gcc
 RUN apt-get install -y subversion make autoconf libproj-dev proj-bin proj-data  libtool libgdal1-dev libxerces-c3-dev libfox-1.6-0 libfox-1.6-dev
-RUN wget http://prdownloads.sourceforge.net/sumo/sumo-src-0.29.0.tar.gz
-RUN tar xvfz sumo-src-0.29.0.tar.gz
-RUN cd sumo-0.29.0 && svn co https://svn.code.sf.net/p/sumo/code/trunk/sumo
-RUN cd sumo-0.29.0 && aclocal && libtoolize --force && autoheader && autoconf
-RUN cd sumo-0.29.0/sumo &&  make -f Makefile.cvs
-RUN cd sumo-0.29.0 && ./configure 
-RUN cd sumo-0.29.0  && make && make install
 RUN apt-get install -y unzip
 RUN apt-get install -y nano
 RUN apt-get install -y g++ libsqlite3++ libxml2-dev libprotobuf-dev
