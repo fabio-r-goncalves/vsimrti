@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 EXPOSE 46587
 EXPOSE 4100
-ADD https://polo.uminho.pt:8080/index.php/s/YpoOzUinWY92XW8/download ./jdk-13.tar
+ADD https://polo.uminho.pt:8080/index.php/s/Hu95T0vtEU3408C/download ./jdk-8.tar
 RUN apt-get update && \ 
 	apt-get install -y software-properties-common && \
 	add-apt-repository -y ppa:sumo/stable && \
@@ -29,9 +29,9 @@ RUN apt-get update && \
 	git \
 	gedit && \
 	mkdir /usr/lib/jvm && \
-	tar xvfz jdk-13.tar && \
-	cp -R jdk-13 /usr/lib/jvm/ && \
-	echo "export PATH=$PATH:/usr/lib/jvm/jdk-13/bin" > /root/.bashrc && \
+	tar xvfz jdk-8.tar && \
+	cp -R jdk1.8.0_221 /usr/lib/jvm/ && \
+	echo "export PATH=$PATH:/usr/lib/jvm/jdk1.8.0_221/bin" > /root/.bashrc && \
 	mkdir /home/vsimrti && \
 	chown 1000:1000 -R /home/vsimrti && \
 	wget https://www.dcaiti.tu-berlin.de/research/simulation/download/get/vsimrti-bin-19.0.zip && \
