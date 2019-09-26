@@ -1,37 +1,37 @@
 FROM ubuntu:latest
 EXPOSE 46587
 EXPOSE 4100
-RUN apt-get update
-RUN apt-get install -y wget
-RUN apt-get install -y unzip
-RUN apt-get install -y nano
-RUN apt-get install -y g++ libsqlite3++ libxml2-dev libprotobuf-dev
-RUN apt-get install -y gcc python unzip tar
-RUN apt-get install -y lbzip2 patch
+ADD https://polo.uminho.pt:8080/index.php/s/YpoOzUinWY92XW8/download ./jdk-13.tar
+RUN apt-get update && apt-get install -y --allow-unauthenticated \
+	wget \ 
+	unzip \
+	nano \
+	gcc \
+	g++ \
+	pkg-config \
+	lbzip2 \
+	libprotobuf-dev \
+	libsqlite3-dev \
+	libsqlite3++ \
+	libxml2-dev \
+	protobuf-compiler \
+	patch \
+	patch \
+	unzip \
+	rsync \
+	wget \
+	git \
+	gedit \
+	software-properties-common
+RUN mkdir /usr/lib/jvm && tar xvfz jdk-13.tar && cp -R jdk-13 /usr/lib/jvm/ && echo "export PATH=$PATH:/usr/lib/jvm/jdk-13/bin" > /root/.bashrc
 RUN mkdir /home/vsimrti
 RUN chown 1000:1000 -R /home/vsimrti
-RUN wget https://www.dcaiti.tu-berlin.de/research/simulation/download/get/vsimrti-bin-17.0.zip
-RUN unzip vsimrti-bin-17.0.zip -d /home
-RUN rm vsimrti-bin-17.0.zip
-RUN apt-get install -y software-properties-common
-RUN apt-add-repository -y ppa:webupd8team/java
-RUN apt-get update
-RUN echo yes | apt-get install -y oracle-java8-installer
-RUN add-apt-repository -y ppa:sumo/stable
-RUN apt-get update
-RUN apt-get install -y --allow-unauthenticated sumo sumo-tools sumo-doc
-RUN apt-get install -y build-essential libsqlite3-dev libcrypto++-dev libboost-all-dev libssl-dev git python-setuptools
-RUN apt-get install -y python-dev python-pygraphviz python-kiwi python-pygoocanvas python-gnome2 python-rsvg ipython
-RUN apt-get install -y git
-RUN mkdir /home/vsimrti-allinone/vsimrti/bin/fed/ns3/ns-allinone
-RUN cd /home/vsimrti-allinone/vsimrti/bin/fed/ns3/ns-allinone && git clone https://github.com/named-data-ndnSIM/ns-3-dev.git ns && git clone https://github.com/named-data-ndnSIM/pybindgen.git pybindgen &&  git clone --recursive https://github.com/named-data-ndnSIM/ndnSIM.git ns/src/ndnSIM
+RUN wget https://www.dcaiti.tu-berlin.de/research/simulation/download/get/vsimrti-bin-19.0.zip &&  unzip vsimrti-bin-19.0.zip -d /home && rm vsimrti-bin-19.0.zip
+ADD ./ns3_installer.sh /home/vsimrti-allinone/vsimrti/bin/fed/ns3/ns3_installer.sh
+RUN add-apt-repository -y ppa:sumo/stable && apt-get update && apt-get install -y --allow-unauthenticated sumo sumo-tools sumo-doc
+
 WORKDIR /home/vsimrti
 VOLUME /home/vsimrti
 ADD ./script.sh /script.sh
-ADD ./vsim_patch.sh /home/vsimrti-allinone/vsimrti/bin/fed/ns3/
-RUN cd /home/vsimrti-allinone/vsimrti/bin/fed/ns3/ && ./vsim_patch.sh && mv scratch/* ns-allinone/ns/scratch/ && mv src/* ns-allinone/ns/src/
-ADD ./run.sh /home/vsimrti-allinone/vsimrti/bin/fed/ns3/
 RUN chmod 777 /script.sh
-RUN apt-get update --fix-missing
-RUN apt-get install -y gedit
 ENTRYPOINT ["/bin/bash","/script.sh"]
